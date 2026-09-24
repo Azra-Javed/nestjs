@@ -38,4 +38,13 @@ export class ProfilesController {
         return this.ProfileService.update(id, body);
     }
 
+    //DELETE /profiles/:id
+
+    @Delete(':id')
+    delete(
+        @Param('id') id: string
+    ) {
+        return this.ProfileService.delete(id);
+    }
+
 }

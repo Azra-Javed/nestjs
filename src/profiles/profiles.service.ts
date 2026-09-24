@@ -59,4 +59,9 @@ export class ProfilesService {
 
         return profile;
     }
+
+    //delte profile
+    delete(id: string) {
+        return this.profiles.filter((profile) => profile.id !== id);
+    }
 }
