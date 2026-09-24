@@ -24,7 +24,14 @@ export class ProfilesService {
         },
     ];
 
+    //find all profiles
+
     findAll() {
         return this.profiles
+    }
+
+    //find one profile
+    findOne(id: string) {
+        return this.profiles.find((profile) => profile.id === id)
     }
 }

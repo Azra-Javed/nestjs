@@ -14,4 +14,10 @@ export class ProfilesController {
     findAll() {
         return this.ProfileService.findAll();
     }
+
+    //GET /profiles/:id
+    @Get("id")
+    findOne(@Param('id') id:string){
+       return this.ProfileService.findOne(id);
+    }
 }
