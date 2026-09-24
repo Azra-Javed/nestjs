@@ -21,8 +21,14 @@ export class ProfilesController {
 
         // throw new HttpException("profile not found", httpStatus.Not_Found);
         //throw new NotFoundException();
+        try {
+            return this.ProfileService.findOne(id);
+        } catch (error: any) {
+            // if(error instanceof DatabaseException)
+            //     throw new NotFoundException();
+            throw new NotFoundException(error.message)
+        }
 
-        return this.ProfileService.findOne(id);
     }
 
     //POST /profiles
