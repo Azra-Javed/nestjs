@@ -16,8 +16,16 @@ export class ProfilesController {
     }
 
     //GET /profiles/:id
-    @Get("id")
-    findOne(@Param('id') id:string){
-       return this.ProfileService.findOne(id);
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return this.ProfileService.findOne(id);
     }
+
+    //POST /profiles
+    @Post()
+    create(
+        @Body() body: CreateProfileDto) {
+        return this.ProfileService.create(body);
+    }
+
 }
