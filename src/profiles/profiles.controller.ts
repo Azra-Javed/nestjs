@@ -1,43 +1,17 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
+import { ProfilesService } from './profiles.service.js';
 
 
 @Controller('profiles')
 export class ProfilesController {
-    //@path: Get/profiles
+    constructor(private ProfileService: ProfilesService) { }
+
+    // GET /profiles
 
     @Get()
-    findAll(@Query('age') age: number) {
-        return [age];
-    }
-
-    //@path: GET/profiles/:id
-
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return { id };
-    }
-
-    //@path: POST /profiles
-    @Post()
-    create(@Body() body: CreateProfileDto) {
-        return {
-            name: body.name,
-            age: body.age,
-        }
-    }
-
-    //@path: PUT 
-    @Put(':id')
-    update(
-        @Param('id') id: string,
-        @Body() body: UpdateProfileDto) {
-
-        return {
-            id,
-            ...body
-        }
+    findAll() {
+        return this.ProfileService.findAll();
     }
 }
-
