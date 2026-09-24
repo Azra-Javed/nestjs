@@ -28,4 +28,14 @@ export class ProfilesController {
         return this.ProfileService.create(body);
     }
 
+    //PUT /profiles/dfhd
+
+    @Put(':id')
+    update(
+        @Param('id') id: string,
+        @Body() body: UpdateProfileDto
+    ) {
+        return this.ProfileService.update(id, body);
+    }
+
 }
